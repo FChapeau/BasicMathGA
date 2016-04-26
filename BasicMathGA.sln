@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicMathGA", "BasicMathGA\BasicMathGA.csproj", "{40832BD0-4D44-4ED7-A0A6-7631AE27605F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicMathGA.Tests", "BasicMathGA.Tests\BasicMathGA.Tests.csproj", "{A1C45337-8ECB-4582-806B-7E1F2F8AC442}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{40832BD0-4D44-4ED7-A0A6-7631AE27605F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40832BD0-4D44-4ED7-A0A6-7631AE27605F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40832BD0-4D44-4ED7-A0A6-7631AE27605F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C45337-8ECB-4582-806B-7E1F2F8AC442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C45337-8ECB-4582-806B-7E1F2F8AC442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C45337-8ECB-4582-806B-7E1F2F8AC442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C45337-8ECB-4582-806B-7E1F2F8AC442}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

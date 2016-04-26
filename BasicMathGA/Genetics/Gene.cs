@@ -38,6 +38,18 @@ namespace BasicMathGA.Genetics
             this.data = new BitArray(data);
         }
 
+        public Gene(char input)
+        {
+            for (int i = 0; i < possiblevalues.Length; i++)
+            {
+                if (input == possiblevalues[i])
+                {
+                    data = new BitArray(BitConverter.GetBytes(i));
+                    break;
+                }
+            }
+        }
+
         public BitArray GetData()
         {
             return data;
@@ -48,6 +60,11 @@ namespace BasicMathGA.Genetics
             int numvalue = ConvertBitArrayToInt(data);
 
             return possiblevalues[numvalue];
+        }
+
+        public int GetIntValue()
+        {
+            return ConvertBitArrayToInt(data);
         }
 
         private int ConvertBitArrayToInt(BitArray input)
@@ -63,6 +80,18 @@ namespace BasicMathGA.Genetics
             }
 
             return numvalue;
+        }
+
+        public bool IsOperand()
+        {
+            var result = new int();
+
+            //Try to convert the string to an int. If it fails, it's an operand
+            if (int.TryParse(GetValue().ToString(), out result))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

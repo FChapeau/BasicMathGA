@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Genetics\Chromosome.cs" />
+    <Compile Include="Genetics\Gene.cs" />
+    <Compile Include="Genetics\Generation.cs" />
+    <Compile Include="Genetics\MathGuesser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

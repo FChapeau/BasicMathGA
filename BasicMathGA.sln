@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicMathGA", "BasicMathGA\BasicMathGA.csproj", "{40832BD0-4D44-4ED7-A0A6-7631AE27605F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicMathGA.Tests", "BasicMathGA.Tests\BasicMathGA.Tests.csproj", "{A1C45337-8ECB-4582-806B-7E1F2F8AC442}"
+	ProjectSection(ProjectDependencies) = postProject
+		{40832BD0-4D44-4ED7-A0A6-7631AE27605F} = {40832BD0-4D44-4ED7-A0A6-7631AE27605F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

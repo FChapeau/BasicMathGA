@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,89 +10,94 @@ namespace BasicMathGA.Genetics
 {
     public class Gene
     {
-        private BitArray data;
-        private int length = 4;
-        private char[] possiblevalues = new char[14] { '1','2','3','4','5','6','7','8','9','0','+','-','/','*' };
+        public int Data{ get; set; }
+        private char[] possiblevalues = new char[14]
+        {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '/', '*'};
 
         public Gene()
         {
-            data = new BitArray(4);
+            Data = 0;
         }
 
-        public Gene(BitArray data)
+        public Gene(int data)
         {
-            if (data.Length != length)
-            {
-                throw new ArgumentException();
-            }
 
-            this.data = data;
+            Data = data;
         }
 
-        public Gene(bool[] data)
+        public Gene(char data)
         {
-            if (data.Length != length)
-            {
-                throw new ArgumentException();
-            }
+            Data = -1;
 
-            this.data = new BitArray(data);
-        }
-
-        public Gene(char input)
-        {
             for (int i = 0; i < possiblevalues.Length; i++)
             {
-                if (input == possiblevalues[i])
+                if (possiblevalues[i] == data)
                 {
-                    data = new BitArray(BitConverter.GetBytes(i));
+                    Data = i;
                     break;
                 }
             }
-        }
 
-        public BitArray GetData()
-        {
-            return data;
-        }
-
-        public char GetValue()
-        {
-            int numvalue = ConvertBitArrayToInt(data);
-
-            return possiblevalues[numvalue];
-        }
-
-        public int GetIntValue()
-        {
-            return ConvertBitArrayToInt(data);
-        }
-
-        private int ConvertBitArrayToInt(BitArray input)
-        {
-            int numvalue = 0;
-
-            for (int i = 1; i == length; i++)
+            if (Data == -1)
             {
-                if (input[i - 1] == true)
-                {
-                    numvalue += (int)Math.Pow(2, i);
-                }
+                throw new ArgumentException();
             }
+        }
 
-            return numvalue;
+        public int AsInt()
+        {
+            return Data;
+        }
+
+        public char AsChar()
+        {
+            if (Data > 13)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            return possiblevalues[Data];
+        }
+
+        public BitArray AsBitArray()
+        {
+            BitArray output = new BitArray(BitConverter.GetBytes(Data)) {Length = 4};
+
+            return output;
         }
 
         public bool IsOperand()
         {
-            var result = new int();
-
-            //Try to convert the string to an int. If it fails, it's an operand
-            if (int.TryParse(GetValue().ToString(), out result))
+            if (9 < Data && Data < 14)
             {
-                return false;
+                return true;
             }
+
+            return false;
+        }
+
+        public bool IsDigit()
+        {
+            if (Data < 9) return true;
+            return false;
+        }
+
+        private int GetIntFromBitArray(BitArray bitArray)
+        {
+
+            if (bitArray.Length > 32)
+                throw new ArgumentException("Argument length shall be at most 32 bits.");
+
+            int[] array = new int[1];
+            bitArray.CopyTo(array, 0);
+            return array[0];
+
+        }
+
+        public bool IsSupported()
+        {
+            if (Data < 13) return false;
             return true;
         }
     }
+
 }

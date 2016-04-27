@@ -36,7 +36,7 @@ namespace BasicMathGA.Genetics
 
             foreach (Gene g in Genome)
             {
-                output += g.GetValue();
+                output += g.AsChar();
             }
 
             return output;
@@ -48,9 +48,9 @@ namespace BasicMathGA.Genetics
             List<Gene> cleanGenome = Genome;
             
             //Clean unsupported gene codes
-            foreach (Gene g in cleanGenome)
+            foreach (Gene g in cleanGenome.ToList())
             {
-                if (g.GetIntValue() > 13)
+                if (g.IsSupported())
                 {
                     cleanGenome.Remove(g);
                 }

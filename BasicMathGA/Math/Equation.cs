@@ -23,19 +23,8 @@ namespace BasicMathGA.Math
                 {
                     if (MathComponents[i].isMultiplyorDivide())
                     {
-                        float left = MathComponents[i - 1].getDigitalValue();
-                        float right = MathComponents[i + 1].getDigitalValue();
-                        PossibleValues operand = MathComponents[i].getValue();
-                        MathComponent newValue;
-
-                        if (operand == PossibleValues.Multiply)
-                        {
-                            newValue = new MathComponent(left*right);
-                        }
-                        else
-                        {
-                            newValue = new MathComponent(left/right);
-                        }
+                        MathComponent newValue = DoSimpleCalculation(MathComponents[i - 1], MathComponents[i],
+                            MathComponents[i + 1]);
 
                         MathComponents[i] = newValue;
 
@@ -53,19 +42,8 @@ namespace BasicMathGA.Math
                 {
                     if (MathComponents[i].isOperand())
                     {
-                        float left = MathComponents[i - 1].getDigitalValue();
-                        float right = MathComponents[i + 1].getDigitalValue();
-                        PossibleValues operand = MathComponents[i].getValue();
-                        MathComponent newValue;
-
-                        if (operand == PossibleValues.Add)
-                        {
-                            newValue = new MathComponent(left + right);
-                        }
-                        else
-                        {
-                            newValue = new MathComponent(left - right);
-                        }
+                        MathComponent newValue = DoSimpleCalculation(MathComponents[i - 1], MathComponents[i],
+                            MathComponents[i + 1]);
 
                         MathComponents[i] = newValue;
 
@@ -77,8 +55,37 @@ namespace BasicMathGA.Math
             }
             return MathComponents[0].getDigitalValue();
         }
-        
 
+        private MathComponent DoSimpleCalculation(MathComponent left, MathComponent operand, MathComponent right)
+        {
+            float leftDigit = left.getDigitalValue();
+            float rightDigit = right.getDigitalValue();
+            MathComponent newValue;
+
+            if (left.isOperand() || right.isOperand() || operand.isDigit())
+            {
+                throw new InvalidEnumArgumentException("Expected digit or operand, got the opposite. Check function parameters");
+            }
+
+            if (operand.getValue() == PossibleValues.Add)
+            {
+                newValue = new MathComponent(leftDigit + rightDigit);
+            }
+            else if (operand.getValue() == PossibleValues.Substract)
+            {
+                newValue = new MathComponent(leftDigit - rightDigit);
+            }
+            else if (operand.getValue() == PossibleValues.Multiply)
+            {
+                newValue = new MathComponent(leftDigit * rightDigit);
+            }
+            else //if (operand.getValue() == PossibleValues.Divide)
+            {
+                newValue = new MathComponent(leftDigit/rightDigit);
+            }
+
+            return newValue;
+        }
 
         /// <summary>
         /// Function that checks whether or not the Equation contains specified operand

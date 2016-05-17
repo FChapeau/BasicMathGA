@@ -15,6 +15,8 @@
         Add = 10,
         Substract = 11,
         Multiply = 12,
-        Divide = 13
+        Divide = 13,
+        Invalid1 = 14,
+        Invalid2 = 15
     }
 }

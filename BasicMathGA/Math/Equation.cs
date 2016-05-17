@@ -14,6 +14,11 @@ namespace BasicMathGA.Math
             MathComponents = new List<MathComponent>();
         }
 
+        public Equation(List<MathComponent> data)
+        {
+            MathComponents = data;
+        }
+
         public float Calculate ()
         {
             while (this.containsOperand(new MathComponent(PossibleValues.Multiply)) ||

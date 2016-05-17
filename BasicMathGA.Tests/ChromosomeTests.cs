@@ -68,5 +68,53 @@ namespace BasicMathGA.Tests
 
             Assert.AreEqual(totest.ToString(), "1+2");
         }
+
+        [TestMethod]
+        public void CalculateAddsTwoNumbers()
+        {
+            Chromosome chromosome = new Chromosome("1+2");
+            float answer = chromosome.Calculate();
+            Assert.AreEqual(3f, answer);
+        }
+
+        [TestMethod]
+        public void CalculateSubstractsTwoNumbers()
+        {
+            Chromosome chromosome = new Chromosome("2-1");
+            float answer = chromosome.Calculate();
+            Assert.AreEqual(1f, answer);
+        }
+
+        [TestMethod]
+        public void CalculateMultipliesTwoNumbers()
+        {
+            Chromosome chromosome = new Chromosome("2*2");
+            float answer = chromosome.Calculate();
+            Assert.AreEqual(4f, answer);
+        }
+
+        [TestMethod]
+        public void CalculateDividesTwoNumbers()
+        {
+            Chromosome chromosome = new Chromosome("4/2");
+            float answer = chromosome.Calculate();
+            Assert.AreEqual(2f, answer);
+        }
+
+        [TestMethod]
+        public void CalculateCanHandleNonIntegerDivision()
+        {
+            Chromosome chromosome = new Chromosome("1/2");
+            float answer = chromosome.Calculate();
+            Assert.AreEqual(0.5f, answer);
+        }
+
+        [TestMethod]
+        public void CalculateCanHandleMultipleAditionsInARow()
+        {
+            Chromosome chromosome = new Chromosome("1+2+1");
+            float answer = chromosome.Calculate();
+            Assert.AreEqual(4f, answer);
+        }
     }
 }

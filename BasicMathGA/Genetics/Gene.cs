@@ -49,6 +49,18 @@ namespace BasicMathGA.Genetics
             return Data;
         }
 
+        public int GetDigit()
+        {
+            if (IsDigit())
+            {
+                return Data + 1;
+            }
+            else
+            {
+                throw new IndexOutOfRangeException();
+            }
+        }
+
         public char AsChar()
         {
             if (Data > 13)

@@ -97,9 +97,23 @@ namespace BasicMathGA.Genetics
             int num1 = -1;
             char operand = ' ';
             int num2 = -1;
+            var CalculationGenome = Genome;
 
-            for (int i = 0; i < Genome.Count; i++)
+            for (int i = 0; i < CalculationGenome.Count; i++)
             {
+                
+                if (num1 == -1 && CalculationGenome[i].IsDigit())
+                {
+                    num1 = CalculationGenome[i].GetDigit();
+                }
+                else if (operand == ' ' && CalculationGenome[i].IsOperand() && num1 != -1)
+                {
+                    operand = CalculationGenome[i].AsChar();
+                }
+                else if (num2 == -1 && CalculationGenome[i].IsDigit() && num1 != -1 && operand != ' ')
+                {
+                    num2 = CalculationGenome[i].GetDigit();
+                }
                 if (num1 != -1 && num2 != -1 && operand != ' ')
                 {
                     switch (operand)
@@ -111,11 +125,26 @@ namespace BasicMathGA.Genetics
                         case '-':
                             output += (float) num1 - num2;
                             break;
+                        case '*':
+                            output += (float) num1 * num2;
+                            break;
+                        case '/':
+                            output += (float) num1 / num2;
+                            break;
                     }
+                    num1 = -1;
+                    num2 = -1;
+                    operand = ' ';
                 }
             }
 
             return output;
         }
+
+        public void Mutate()
+        {
+            
+        }
     }
+    
 }

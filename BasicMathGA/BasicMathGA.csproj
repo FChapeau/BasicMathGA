@@ -47,6 +47,9 @@
     <Compile Include="Genetics\Gene.cs" />
     <Compile Include="Genetics\Generation.cs" />
     <Compile Include="Genetics\MathGuesser.cs" />
+    <Compile Include="Math\Equation.cs" />
+    <Compile Include="Math\MathComponents.cs" />
+    <Compile Include="PossibleValues.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -55,6 +55,7 @@
     <Compile Include="ChromosomeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeneTest.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicMathGA\BasicMathGA.csproj">

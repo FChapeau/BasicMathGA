@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace BasicMathGA.Math
+namespace BasicMathGA.Library.Math
 {
     public class Equation
     {

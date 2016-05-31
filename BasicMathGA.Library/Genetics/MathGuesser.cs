@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BasicMathGA.Genetics
+namespace BasicMathGA.Library.Genetics
 {
     public class MathGuesser
     {
@@ -24,9 +19,9 @@ namespace BasicMathGA.Genetics
             GenerationHistory = new List<Generation>();
         }
 
-        public Chromosome Compute(float Answer)
+        public Chromosome Compute(float AnswerToGuess)
         {
-            this.Answer = Answer;
+            this.Answer = AnswerToGuess;
             Chromosome Output = new Chromosome();
 
             //Generate initial population
@@ -40,7 +35,7 @@ namespace BasicMathGA.Genetics
 
         private float CheckFitness(Chromosome chromosome)
         {
-            List<String> totest = new List<string>();
+            List<string> totest = new List<string>();
             float fitnessvalue = 0.0f;
             //Calculate answer
             //Check fitness

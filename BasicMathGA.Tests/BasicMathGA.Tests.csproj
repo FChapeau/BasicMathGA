@@ -55,11 +55,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EquationTests.cs" />
     <Compile Include="GeneTests.cs" />
+    <Compile Include="ChromosomeTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BasicMathGA\BasicMathGA.csproj">
+    <ProjectReference Include="..\BasicMathGA.Library\BasicMathGA.Library.csproj">
+      <Project>{4a67508e-790b-4c1d-a71c-c208676c1364}</Project>
+      <Name>BasicMathGA.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BasicMathGA\BasicMathGA.Console.csproj">
       <Project>{40832bd0-4d44-4ed7-a0a6-7631ae27605f}</Project>
-      <Name>BasicMathGA</Name>
+      <Name>BasicMathGA.Console</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -1,5 +1,6 @@
 ﻿using System;
-using BasicMathGA.Math;
+using BasicMathGA.Library;
+using BasicMathGA.Library.Math;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BasicMathGA.Tests

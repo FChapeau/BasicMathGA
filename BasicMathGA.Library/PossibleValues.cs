@@ -1,4 +1,4 @@
-﻿namespace BasicMathGA
+﻿namespace BasicMathGA.Library
 {
     public enum PossibleValues
     {

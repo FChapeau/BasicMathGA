@@ -1,5 +1,6 @@
 ﻿using System;
-using BasicMathGA.Genetics;
+using BasicMathGA.Library;
+using BasicMathGA.Library.Genetics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BasicMathGA.Tests

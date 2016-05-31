@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace BasicMathGA.Utility
+namespace BasicMathGA.Library.Utility
 {
     public static class Int32Extensions
     {

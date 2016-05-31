@@ -1,4 +1,4 @@
-﻿namespace BasicMathGA.Math
+﻿namespace BasicMathGA.Library.Math
 {
     public class MathComponent
     {
@@ -13,7 +13,6 @@
         public MathComponent(float digitalValue)
         {
             DigitalValue = digitalValue;
-            Value = PossibleValues.Zero;
         }
 
         public bool isOperand()
@@ -39,6 +38,24 @@
         public float getDigitalValue()
         {
             return DigitalValue;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is MathComponent))
+            {
+                return false;
+            }
+            else
+            {
+                MathComponent mc = (MathComponent) obj;
+                if (this.getValue() != mc.getValue() || !(this.getDigitalValue().Equals(mc.getDigitalValue())))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

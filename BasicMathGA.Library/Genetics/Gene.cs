@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
-using BasicMathGA.Math;
-using BasicMathGA.Utility;
+using BasicMathGA.Library.Math;
+using BasicMathGA.Library.Utility;
 
-namespace BasicMathGA.Genetics
+namespace BasicMathGA.Library.Genetics
 {
     public class Gene : MathComponent
     {
@@ -67,7 +67,5 @@ namespace BasicMathGA.Genetics
 
             return new Gene((PossibleValues)left.ToNumeral());
         }
-
-
     }
 }

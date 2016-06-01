@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BasicMathGA.Library;
 using BasicMathGA.Library.Math;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -88,6 +89,51 @@ namespace BasicMathGA.Tests
             float answer = equation.Calculate();
 
             Assert.AreEqual(10f, answer);
+        }
+
+        [TestMethod]
+        public void CleanupClearsLeadingOperands()
+        {
+            Equation equation = new Equation();
+
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Add));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Add));
+            equation.MathComponents.Add(new MathComponent(2));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Multiply));
+            equation.MathComponents.Add(new MathComponent(4));
+
+            equation = equation.Cleanup(equation);
+
+            Assert.AreEqual(false, equation.MathComponents.First().isOperand());
+        }
+
+        [TestMethod]
+        public void CleanupClearsTrailingOperands()
+        {
+            Equation equation = new Equation();
+            equation.MathComponents.Add(new MathComponent(2));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Multiply));
+            equation.MathComponents.Add(new MathComponent(4));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Add));
+
+            equation = equation.Cleanup(equation);
+
+            Assert.AreEqual(false, equation.MathComponents.Last().isOperand());
+        }
+
+        [TestMethod]
+        public void CleanupClearsConsecutiveOperands()
+        {
+            Equation equation = new Equation();
+            equation.MathComponents.Add(new MathComponent(2));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Multiply));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Multiply));
+            equation.MathComponents.Add(new MathComponent(4));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Add));
+
+            equation = equation.Cleanup(equation);
+
+            Assert.AreEqual(false, equation.MathComponents[2].isOperand());
         }
     }
 }

@@ -67,5 +67,23 @@ namespace BasicMathGA.Library.Genetics
 
             return new Gene((PossibleValues)left.ToNumeral());
         }
+
+        //public override bool Equals(object obj)
+        //{
+        //    if (!(obj is Gene))
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        Gene mc = (Gene)obj;
+        //        if (this.getValue() != mc.getValue() || !(this.getDigitalValue().Equals(mc.getDigitalValue())))
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //    return true;
+        //}
     }
 }

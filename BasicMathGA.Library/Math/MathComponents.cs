@@ -8,6 +8,10 @@
         public MathComponent(PossibleValues value)
         {
             this.Value = value;
+            if (isDigit())
+            {
+                DigitalValue = (int) value;
+            }
         }
 
         public MathComponent(float digitalValue)
@@ -17,12 +21,17 @@
 
         public bool isOperand()
         {
-            return (int)Value > 9;
+            return (int)Value > 9 && (int)Value < 14;
         }
 
         public bool isMultiplyorDivide()
         {
-            return (int)Value > 11;
+            return (int)Value > 11 && (int)Value < 14;
+        }
+
+        public bool isInvalid()
+        {
+            return (int) Value > 13;
         }
 
         public bool isDigit()

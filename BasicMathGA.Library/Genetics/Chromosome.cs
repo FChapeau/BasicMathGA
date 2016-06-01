@@ -7,7 +7,8 @@ namespace BasicMathGA.Library.Genetics
     public class Chromosome
     {
         public List<Gene> Genes { get; set; }
-
+        public float Fitness { get; set; }
+        
         public Chromosome()
         {
             Genes = new List<Gene>();
@@ -36,7 +37,19 @@ namespace BasicMathGA.Library.Genetics
             }
             else
             {
-                
+                int i = position/4;
+
+                for (int j = 0; j < i; j++)
+                {
+                    output.Genes.Add(Genes[j]);
+                }
+
+                output.Genes.Add(Genes[i].Splice(other.Genes[i], position - i*4));
+
+                for (int j = i + 1; j < other.Genes.Count; j++)
+                {
+                    output.Genes.Add(other.Genes[j]);
+                }
             }
 
             return output;
@@ -44,7 +57,7 @@ namespace BasicMathGA.Library.Genetics
 
         public override bool Equals(object obj)
         {
-            if (obj.GetType() == typeof(Chromosome))
+            if (obj is Chromosome)
             {
                 Chromosome other = (Chromosome) obj;
                 if (this.Genes.Count != other.Genes.Count)
@@ -55,12 +68,19 @@ namespace BasicMathGA.Library.Genetics
                 {
                     for (int i = 0; i < this.Genes.Count; i++)
                     {
-                        if (this.Genes[i].Equals(other.Genes[i]))
+                        Gene g1 = Genes[i];
+                        Gene g2 = other.Genes[i];
+
+                        if (!g1.Equals(g2))
                         {
                             return false;
                         }
                     }
                 }
+            }
+            else
+            {
+                return false;
             }
 
             return true;

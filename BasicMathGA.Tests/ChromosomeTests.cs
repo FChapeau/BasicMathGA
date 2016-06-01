@@ -28,5 +28,25 @@ namespace BasicMathGA.Tests
 
             Assert.AreEqual(c2, c3);
         }
+
+        [TestMethod]
+        public void SpliceReturnsCorrectlySplicedChromosomeGivenNonMultipleOfFourPosition()
+        {
+            Chromosome c1 = new Chromosome();
+            c1.Genes.Add(new Gene(PossibleValues.Multiply));
+            c1.Genes.Add(new Gene(PossibleValues.Add));
+            c1.Genes.Add(new Gene(PossibleValues.One));
+            c1.Genes.Add(new Gene(PossibleValues.Eight));
+
+            Chromosome c2 = new Chromosome();
+            c2.Genes.Add(new Gene(PossibleValues.Multiply));
+            c2.Genes.Add(new Gene(PossibleValues.Add));
+            c2.Genes.Add(new Gene(PossibleValues.Five));
+            c2.Genes.Add(new Gene(PossibleValues.Eight));
+
+            Chromosome c3 = c1.Splice(c2, 9);
+
+            Assert.AreEqual(c2, c3);
+        }
     }
 }

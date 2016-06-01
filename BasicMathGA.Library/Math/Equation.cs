@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace BasicMathGA.Library.Math
 {
@@ -15,6 +16,40 @@ namespace BasicMathGA.Library.Math
         public Equation(List<MathComponent> data)
         {
             MathComponents = data;
+        }
+
+        public Equation Cleanup(Equation eq)
+        {
+            Equation cleanEquation = eq;
+
+            //Remove leading operand
+            while (cleanEquation.MathComponents.First().isOperand())
+            {
+                cleanEquation.MathComponents.Remove(cleanEquation.MathComponents.First());
+            }
+
+            //Remove trailing operand
+            while (cleanEquation.MathComponents.Last().isOperand())
+            {
+                cleanEquation.MathComponents.Remove(cleanEquation.MathComponents.Last());
+            }
+
+            //Remove consecutive characters
+            for (int i = 0; i < cleanEquation.MathComponents.Count - 1; i++)
+            {
+                if (cleanEquation.MathComponents[i].isInvalid())
+                {
+                    cleanEquation.MathComponents.RemoveAt(i);
+                }
+                else if ((cleanEquation.MathComponents[i].isOperand() && cleanEquation.MathComponents[i + 1].isOperand()) ||
+                    cleanEquation.MathComponents[i].isDigit() && cleanEquation.MathComponents[i + 1].isDigit())
+                {
+                    cleanEquation.MathComponents.RemoveAt(i + 1);
+                    i--;
+                }
+            }
+
+            return cleanEquation;
         }
 
         public float Calculate ()

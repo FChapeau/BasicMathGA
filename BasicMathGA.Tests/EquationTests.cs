@@ -135,5 +135,36 @@ namespace BasicMathGA.Tests
 
             Assert.AreEqual(false, equation.MathComponents[2].isOperand());
         }
+
+        [TestMethod]
+        public void CleanupClearsInvalidCharacters()
+        {
+            Equation equation = new Equation();
+            equation.MathComponents.Add(new MathComponent(2));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Invalid1));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Multiply));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Invalid2));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Eight));
+
+            equation = equation.Cleanup(equation);
+
+            Assert.AreEqual(3, equation.MathComponents.Count);
+        }
+
+        [TestMethod]
+        public void CleanupClearsInvalidCharactersSurroundingConsecutiveOperands()
+        {
+            Equation equation = new Equation();
+            equation.MathComponents.Add(new MathComponent(2));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Invalid1));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Multiply));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Multiply));
+            equation.MathComponents.Add(new MathComponent(PossibleValues.Invalid2));
+            equation.MathComponents.Add(new MathComponent(2));
+
+            equation = equation.Cleanup(equation);
+
+            Assert.AreEqual(3, equation.MathComponents.Count);
+        }
     }
 }

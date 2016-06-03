@@ -40,6 +40,7 @@ namespace BasicMathGA.Library.Math
                 if (cleanEquation.MathComponents[i].isInvalid())
                 {
                     cleanEquation.MathComponents.RemoveAt(i);
+                    i--;
                 }
                 else if ((cleanEquation.MathComponents[i].isOperand() && cleanEquation.MathComponents[i + 1].isOperand()) ||
                     cleanEquation.MathComponents[i].isDigit() && cleanEquation.MathComponents[i + 1].isDigit())
